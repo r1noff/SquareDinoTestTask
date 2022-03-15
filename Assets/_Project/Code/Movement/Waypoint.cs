@@ -10,7 +10,7 @@ namespace SquareDino.RechkinTestTask.Movement
         private void OnDrawGizmos()
         {
             Gizmos.color = Color.red;
-            Gizmos.DrawSphere(Position, 0.5f);
+            Gizmos.DrawSphere(Position, 0.25f);
         }
 #endif
     }
