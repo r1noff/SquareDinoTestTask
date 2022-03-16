@@ -10,9 +10,15 @@ namespace SquareDino.RechkinTestTask.Input
 
         private void Update()
         {
-            if (UnityEngine.Input.GetMouseButton(0))
+            if (UnityEngine.Input.GetMouseButtonDown(0))
             {
-                Vector3 worldClickPosition = Camera.main.ScreenToWorldPoint(UnityEngine.Input.mousePosition);
+                Ray ray = Camera.main.ScreenPointToRay(UnityEngine.Input.mousePosition);
+                Vector3 worldClickPosition;
+                if (Physics.Raycast(ray, out RaycastHit hit))
+                    worldClickPosition = hit.point;
+                else
+                    worldClickPosition = 
+                        Camera.main.ScreenToWorldPoint(UnityEngine.Input.mousePosition + Vector3.forward * 30f);
                 Clicked?.Invoke(worldClickPosition);
             }
         }

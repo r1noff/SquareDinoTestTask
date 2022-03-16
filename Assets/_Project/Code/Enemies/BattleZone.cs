@@ -43,7 +43,8 @@ namespace SquareDino.RechkinTestTask.Enemies
 
         private void SpawnEnemy(Vector3 position)
         {
-            EnemyHealth enemy = Instantiate(_enemyPrefab, position, Quaternion.identity);
+            EnemyHealth enemy = Instantiate(_enemyPrefab, position, transform.rotation);
+            enemy.transform.SetParent(transform);
             enemy.Dead += OnEnemyDead;
         }
 
