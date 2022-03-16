@@ -18,7 +18,7 @@ namespace SquareDino.RechkinTestTask
 
         private void Start()
         {
-            foreach (IState state in _states) 
+            foreach (IState state in _states)
                 _stateMachine.AddState(state.GetType(), state);
             _stateMachine.Enter<GameStartState>();
         }

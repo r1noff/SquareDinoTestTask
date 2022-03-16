@@ -5,7 +5,7 @@ namespace SquareDino.RechkinTestTask.Movement
     public class Waypoint : MonoBehaviour
     {
         public Vector3 Position => transform.position;
-        
+
 #if UNITY_EDITOR
         private void OnDrawGizmos()
         {

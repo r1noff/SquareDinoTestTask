@@ -5,7 +5,7 @@ namespace SquareDino.RechkinTestTask.GameStates
 {
     public class GameStateMachine : IStateMachine
     {
-        private Dictionary<Type, IState> _states = new Dictionary<Type, IState>();
+        private readonly Dictionary<Type, IState> _states = new Dictionary<Type, IState>();
         private IState _currentState;
 
         public void AddState(Type stateType, IState state) =>

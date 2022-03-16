@@ -17,10 +17,10 @@ namespace SquareDino.RechkinTestTask.GameStates
         public void Enter() =>
             _clickHandler.Clicked += OnClicked;
 
-        public void Exit() => 
+        public void Exit() =>
             _clickHandler.Clicked -= OnClicked;
 
-        private void OnClicked(Vector3 position) => 
+        private void OnClicked(Vector3 position) =>
             _stateMachine.Enter<GameLoopState>();
     }
 }

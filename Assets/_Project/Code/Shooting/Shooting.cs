@@ -1,5 +1,4 @@
-﻿using System;
-using SquareDino.RechkinTestTask.Input;
+﻿using SquareDino.RechkinTestTask.Input;
 using SquareDino.RechkinTestTask.ObjectPool;
 using UnityEngine;
 using Zenject;
@@ -18,12 +17,11 @@ namespace SquareDino.RechkinTestTask.Shooting
             _clickHandler = clickHandler;
         }
 
-        private void OnEnable() => 
+        private void OnEnable() =>
             _clickHandler.Clicked += OnClicked;
-        
-        private void OnDisable() => 
-            _clickHandler.Clicked -= OnClicked;
 
+        private void OnDisable() =>
+            _clickHandler.Clicked -= OnClicked;
 
         private void OnClicked(Vector3 worldPosition)
         {

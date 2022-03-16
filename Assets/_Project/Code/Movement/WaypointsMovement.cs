@@ -1,5 +1,4 @@
-﻿using System;
-using MyBox;
+﻿using MyBox;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
@@ -12,14 +11,14 @@ namespace SquareDino.RechkinTestTask.Movement
         public event UnityAction Came;
 
         private const float CloseRange = 0.1f;
-        
+
         [SerializeField] [AutoProperty] private NavMeshAgent _navMeshAgent;
 
         public void MoveTo(Waypoint waypoint) => _navMeshAgent.SetDestination(waypoint.Position);
 
         private void Update()
         {
-            if (_navMeshAgent.remainingDistance <= CloseRange) 
+            if (_navMeshAgent.remainingDistance <= CloseRange)
                 Came?.Invoke();
         }
     }

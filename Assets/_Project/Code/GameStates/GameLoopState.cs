@@ -13,7 +13,7 @@ namespace SquareDino.RechkinTestTask.GameStates
         private int _currentZoneIndex;
 
         private BattleZone CurrentZone => _battleZones[_currentZoneIndex];
-        
+
         public GameLoopState(WaypointsMovement playerMovement, BattleZone[] battleZones, Waypoint finalWaypoint)
         {
             _playerMovement = playerMovement;
@@ -21,7 +21,7 @@ namespace SquareDino.RechkinTestTask.GameStates
             _finalWaypoint = finalWaypoint;
         }
 
-        public void Enter() => 
+        public void Enter() =>
             SendToCurrentZone();
 
         public void Exit() { }

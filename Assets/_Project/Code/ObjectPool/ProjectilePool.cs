@@ -8,11 +8,11 @@ namespace SquareDino.RechkinTestTask.ObjectPool
     public class ProjectilePool : MonoBehaviour, IObjectPool<Projectile>
     {
         private readonly List<Projectile> _objects = new List<Projectile>();
-        
+
         private Projectile _prefab;
 
         [Inject]
-        private void Construct(Projectile prefab) => 
+        private void Construct(Projectile prefab) =>
             _prefab = prefab;
 
         public Projectile GetObject()

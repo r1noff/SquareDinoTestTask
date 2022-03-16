@@ -1,5 +1,4 @@
-﻿using System;
-using MyBox;
+﻿using MyBox;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -19,11 +18,11 @@ namespace SquareDino.RechkinTestTask.Enemies
         {
             Value -= damage;
             ValueChanged?.Invoke();
-            if(Value <= 0)
+            if (Value <= 0)
                 Dead?.Invoke();
         }
-        
-        private void Start() => 
+
+        private void Start() =>
             Value = MaxValue;
 
         [ButtonMethod]

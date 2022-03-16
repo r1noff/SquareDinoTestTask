@@ -1,9 +1,6 @@
-﻿using System;
-using MyBox;
-using SquareDino.RechkinTestTask.Movement;
+﻿using SquareDino.RechkinTestTask.Movement;
 using UnityEngine;
 using UnityEngine.Events;
-using Zenject;
 
 namespace SquareDino.RechkinTestTask.Enemies
 {
@@ -14,14 +11,14 @@ namespace SquareDino.RechkinTestTask.Enemies
         private const int LineCount = 3;
         private const float Spacing = 1;
 
-        [SerializeField ]private EnemyHealth _enemyPrefab;
+        [SerializeField] private EnemyHealth _enemyPrefab;
         [SerializeField] private int _enemiesCount;
         [SerializeField] private Transform _spawnPoint;
 
+        private int _currentEnemiesCount;
+
         [field: SerializeField] public Waypoint Waypoint { get; private set; }
 
-        private int _currentEnemiesCount;
-        
         private void Start()
         {
             _currentEnemiesCount = _enemiesCount;
@@ -51,7 +48,7 @@ namespace SquareDino.RechkinTestTask.Enemies
         private void OnEnemyDead()
         {
             _currentEnemiesCount--;
-            if(_currentEnemiesCount == 0)
+            if (_currentEnemiesCount == 0)
                 Cleared?.Invoke();
         }
     }

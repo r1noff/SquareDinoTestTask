@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Events;
 
 namespace SquareDino.RechkinTestTask.Input
@@ -17,7 +16,7 @@ namespace SquareDino.RechkinTestTask.Input
                 if (Physics.Raycast(ray, out RaycastHit hit))
                     worldClickPosition = hit.point;
                 else
-                    worldClickPosition = 
+                    worldClickPosition =
                         Camera.main.ScreenToWorldPoint(UnityEngine.Input.mousePosition + Vector3.forward * 30f);
                 Clicked?.Invoke(worldClickPosition);
             }

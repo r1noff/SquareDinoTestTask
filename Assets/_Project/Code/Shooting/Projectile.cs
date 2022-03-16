@@ -8,7 +8,7 @@ namespace SquareDino.RechkinTestTask.Shooting
     public class Projectile : MonoBehaviour, IPooledObject
     {
         private const float MaxDistance = 30f;
-        
+
         [SerializeField] private float _speed;
         [SerializeField] private int _damage;
 
@@ -29,7 +29,7 @@ namespace SquareDino.RechkinTestTask.Shooting
 
         private void OnCollisionEnter(Collision other)
         {
-            if (other.gameObject.TryGetComponent(out EnemyHealth health)) 
+            if (other.gameObject.TryGetComponent(out EnemyHealth health))
                 health.TakeDamage(_damage);
             ReturnToPool();
         }
