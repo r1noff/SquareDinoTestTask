@@ -32,7 +32,7 @@ namespace SquareDino.RechkinTestTask.Enemies
             {
                 for (var j = 0; j < LineCount; j++)
                 {
-                    if(_currentEnemiesCount >= _enemiesCount) return;
+                    if (_currentEnemiesCount >= _enemiesCount) return;
                     Vector3 delta = _spawnPoint.position + new Vector3(j * Spacing, 0, i * Spacing);
                     SpawnEnemy(delta);
                 }

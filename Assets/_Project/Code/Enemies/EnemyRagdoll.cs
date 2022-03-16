@@ -1,4 +1,3 @@
-using System;
 using MyBox;
 using UnityEngine;
 
@@ -10,12 +9,12 @@ namespace SquareDino.RechkinTestTask.Enemies
         [SerializeField] [AutoProperty] private Animator _animator;
         [SerializeField] [AutoProperty] private Rigidbody[] _rigidbodies;
 
-        private void Start() => 
+        private void Start() =>
             _rigidbodies.ForEach(r => r.isKinematic = true);
 
         private void OnEnable() =>
             _health.Dead += EnableRagdoll;
-        
+
         private void OnDisable() =>
             _health.Dead -= EnableRagdoll;
 

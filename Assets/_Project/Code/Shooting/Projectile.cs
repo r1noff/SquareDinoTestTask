@@ -1,5 +1,4 @@
-﻿using System;
-using DG.Tweening;
+﻿using DG.Tweening;
 using SquareDino.RechkinTestTask.Enemies;
 using SquareDino.RechkinTestTask.ObjectPool;
 using UnityEngine;
@@ -15,7 +14,7 @@ namespace SquareDino.RechkinTestTask.Shooting
         [SerializeField] private float _pushForce;
 
         private Vector3 _direction;
-        
+
         public void Emit(Vector3 origin, Vector3 direction)
         {
             _direction = direction;
@@ -40,7 +39,7 @@ namespace SquareDino.RechkinTestTask.Shooting
             var health = other.gameObject.GetComponentInParent<EnemyHealth>();
             if (health != null)
                 health.TakeDamage(_damage);
-            if(other.gameObject.TryGetComponent(out Rigidbody rigidbody))
+            if (other.gameObject.TryGetComponent(out Rigidbody rigidbody))
                 rigidbody.AddForce(_direction.normalized * _pushForce);
             ReturnToPool();
         }

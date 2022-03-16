@@ -1,5 +1,4 @@
-﻿using System;
-using MyBox;
+﻿using MyBox;
 using SquareDino.RechkinTestTask.Movement;
 using UnityEngine;
 
@@ -9,7 +8,7 @@ namespace SquareDino.RechkinTestTask.Animations
     {
         private const string IdleAnimation = "Idle";
         private const string RunAnimation = "Run";
-        
+
         [SerializeField] [AutoProperty] private Animator _animator;
         [SerializeField] [AutoProperty] private WaypointsMovement _waypointsMovement;
 
@@ -18,17 +17,17 @@ namespace SquareDino.RechkinTestTask.Animations
             _waypointsMovement.Moved += OnMoved;
             _waypointsMovement.Came += OnCame;
         }
-        
+
         private void OnDisable()
         {
             _waypointsMovement.Moved -= OnMoved;
             _waypointsMovement.Came -= OnCame;
         }
 
-        private void OnMoved() => 
+        private void OnMoved() =>
             _animator.Play(RunAnimation);
 
-        private void OnCame() => 
+        private void OnCame() =>
             _animator.Play(IdleAnimation);
     }
 }

@@ -9,7 +9,7 @@ namespace SquareDino.RechkinTestTask.Movement
     public class WaypointsMovement : MonoBehaviour
     {
         public event UnityAction Moved;
-        
+
         public event UnityAction Came;
 
         private const float CloseRange = 0.1f;
