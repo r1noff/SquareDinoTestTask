@@ -27,11 +27,12 @@ namespace SquareDino.RechkinTestTask.Enemies
 
         private void SpawnEnemyBulk()
         {
-            int linesCount = _enemiesCount / LineCount;
+            int linesCount = Mathf.CeilToInt(1f * _enemiesCount / LineCount);
             for (var i = 0; i < linesCount; i++)
             {
                 for (var j = 0; j < LineCount; j++)
                 {
+                    if(_currentEnemiesCount >= _enemiesCount) return;
                     Vector3 delta = _spawnPoint.position + new Vector3(j * Spacing, 0, i * Spacing);
                     SpawnEnemy(delta);
                 }
@@ -45,9 +46,10 @@ namespace SquareDino.RechkinTestTask.Enemies
             enemy.Dead += OnEnemyDead;
         }
 
-        private void OnEnemyDead()
+        private void OnEnemyDead(EnemyHealth enemy)
         {
             _currentEnemiesCount--;
+            enemy.Dead -= OnEnemyDead;
             if (_currentEnemiesCount == 0)
                 Cleared?.Invoke();
         }

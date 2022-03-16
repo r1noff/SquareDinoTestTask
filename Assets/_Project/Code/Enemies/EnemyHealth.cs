@@ -6,7 +6,7 @@ namespace SquareDino.RechkinTestTask.Enemies
 {
     public class EnemyHealth : MonoBehaviour
     {
-        public event UnityAction Dead;
+        public event UnityAction<EnemyHealth> Dead;
 
         public event UnityAction ValueChanged;
 
@@ -19,7 +19,7 @@ namespace SquareDino.RechkinTestTask.Enemies
             Value -= damage;
             ValueChanged?.Invoke();
             if (Value <= 0)
-                Dead?.Invoke();
+                Dead?.Invoke(this);
         }
 
         private void Start() =>

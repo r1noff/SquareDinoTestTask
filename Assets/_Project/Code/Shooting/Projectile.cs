@@ -1,4 +1,5 @@
-﻿using DG.Tweening;
+﻿using System;
+using DG.Tweening;
 using SquareDino.RechkinTestTask.Enemies;
 using SquareDino.RechkinTestTask.ObjectPool;
 using UnityEngine;
@@ -11,9 +12,13 @@ namespace SquareDino.RechkinTestTask.Shooting
 
         [SerializeField] private float _speed;
         [SerializeField] private int _damage;
+        [SerializeField] private float _pushForce;
 
+        private Vector3 _direction;
+        
         public void Emit(Vector3 origin, Vector3 direction)
         {
+            _direction = direction;
             transform.position = origin;
             transform
                 .DOMove(transform.position + direction.normalized * _speed, MaxDistance / _speed)
@@ -22,15 +27,21 @@ namespace SquareDino.RechkinTestTask.Shooting
 
         public bool IsFree() => !gameObject.activeInHierarchy;
 
-        public void ReturnToPool() =>
+        public void ReturnToPool()
+        {
+            transform.DOKill();
             gameObject.SetActive(false);
+        }
 
         public void Take() => gameObject.SetActive(true);
 
-        private void OnCollisionEnter(Collision other)
+        private void OnTriggerEnter(Collider other)
         {
-            if (other.gameObject.TryGetComponent(out EnemyHealth health))
+            var health = other.gameObject.GetComponentInParent<EnemyHealth>();
+            if (health != null)
                 health.TakeDamage(_damage);
+            if(other.gameObject.TryGetComponent(out Rigidbody rigidbody))
+                rigidbody.AddForce(_direction.normalized * _pushForce);
             ReturnToPool();
         }
     }
